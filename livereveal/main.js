@@ -29,7 +29,8 @@ var default_config = {
     transition: 'linear',
     slideNumber: true,
     start_slideshow_at: 'beginning',
-    scroll: false,
+    scroll: true,
+    center: false,
 };
 
 config_section.load();
@@ -184,6 +185,7 @@ function Revealer() {
     controls: config.get_sync('controls'),
     progress: config.get_sync('progress'),
     history: config.get_sync('history'),
+    center: config.get_sync('center'),
 
     // You can switch width and height to fix the projector
     width: config.get_sync('width'),
@@ -333,12 +335,13 @@ function buttonHelp() {
     var help_button = $('<i/>')
         .attr('id','help_b')
         .attr('title','Reveal Shortcuts Help')
-        .addClass('fa-question fa-4x fa')
+        .addClass('fa-question fa-lg fa')
         .addClass('my-main-tool-bar')
         .css('position','fixed')
-        .css('bottom','0.5em')
-        .css('left','0.6em')
+        .css('bottom','30px')
+        .css('right','80px')
         .css('opacity', '0.6')
+        .css('z-index', '30')
         .click(
             function(){
                 KeysMessager();
@@ -351,12 +354,13 @@ function buttonExit() {
     var exit_button = $('<i/>')
         .attr('id','exit_b')
         .attr('title','RISE Exit')
-        .addClass('fa-times-circle fa-4x fa')
+        .addClass('fa-times-circle fa-lg fa')
         .addClass('my-main-tool-bar')
         .css('position','fixed')
-        .css('top','0.5em')
-        .css('left','0.48em')
+        .css('bottom','30px')
+        .css('right','20px')
         .css('opacity', '0.6')
+        .css('z-index', '30')
         .click(
             function(){
                 revealMode('simple', 'zoom');
